@@ -107,9 +107,9 @@ export function RainbowCursorTrail() {
         }
 
         // soft glow blob at head
-        const head = pts[pts.length - 1];
-        const hue = ((now - start) * 0.06) % 360;
-        const r = 28;
+        const head = pts[pts.length-1];
+        const hue = ((now - start) * 0.07) % 360;
+        const r = 100;
         const rg = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, r);
         rg.addColorStop(0, `hsla(${hue}, 90%, 65%, 0.14)`);
         rg.addColorStop(1, "rgba(0,0,0,0)");
