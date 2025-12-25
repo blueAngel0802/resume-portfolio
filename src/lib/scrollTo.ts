@@ -10,7 +10,7 @@ export function smoothScrollToId(
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const offset = opts?.offset ?? 84;
-  const duration = opts?.duration ?? 700;
+  const duration = opts?.duration ?? 750;
 
   const startY = window.scrollY;
   const targetY = el.getBoundingClientRect().top + window.scrollY - offset;
@@ -22,7 +22,6 @@ export function smoothScrollToId(
   }
 
   const start = performance.now();
-
   const easeInOutCubic = (t: number) =>
     t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 

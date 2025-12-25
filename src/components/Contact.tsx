@@ -22,10 +22,7 @@ export function Contact() {
         </p>
         <div className="ctas" style={{ marginTop: 10 }}>
           <a className="btn btnPrimary" href={`mailto:${portfolio.email}?subject=Project%20inquiry`}>Email me</a>
-          <a className="btn" href={contact.calendly}>Book a call</a>
-        </div>
-        <div className="muted small" style={{ marginTop: 10 }}>
-          Tip: update the Calendly link in <code>src/data/resume_contact.ts</code>
+          <a className="btn" href={contact.github}>My Gihub</a>
         </div>
       </div>
     </div>

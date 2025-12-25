@@ -1,4 +1,5 @@
 import { portfolio } from "../data/portfolio";
+import { smoothScrollToId } from "../lib/scrollTo";
 
 export function Hero() {
   return (
@@ -12,7 +13,10 @@ export function Hero() {
             <a className="btn btnPrimary" href={`mailto:${portfolio.email}`}>
               Contact
             </a>
-            <a className="btn" href="#projects">
+            <a className="btn" href="#projects" onClick={(e)=>{
+              e.preventDefault();
+              smoothScrollToId("projects",{offset:84,duration:780})
+            }}>
               See projects
             </a>
           </div>

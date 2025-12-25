@@ -9,13 +9,13 @@ const links = [
   { label: "Contact", id: "contact" },
 ];
 
-export function Header(props: { theme: "light" | "dark"; onToggleTheme: () => void }) {
+export function Header() {
   return (
     <header className="header">
       <div className="container headerInner">
         <a
           className="brand"
-          href="#"
+          href="#top"
           onClick={(e) => {
             e.preventDefault();
             smoothScrollToId("top", { offset: 84, duration: 650 });
@@ -32,7 +32,7 @@ export function Header(props: { theme: "light" | "dark"; onToggleTheme: () => vo
               href={`#${l.id}`}
               onClick={(e) => {
                 e.preventDefault();
-                smoothScrollToId(l.id, { offset: 84, duration: 750 });
+                smoothScrollToId(l.id, { offset: 84, duration: 780 });
               }}
             >
               {l.label}
@@ -41,9 +41,6 @@ export function Header(props: { theme: "light" | "dark"; onToggleTheme: () => vo
         </nav>
 
         <div className="ctas">
-          <button className="btn" onClick={props.onToggleTheme} type="button">
-            {props.theme === "dark" ? "Light" : "Dark"}
-          </button>
           <a className="btn" href="/resume.pdf" download>
             Download resume
           </a>
