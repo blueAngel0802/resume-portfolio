@@ -11,7 +11,7 @@ npm run dev
 ```
 
 ## Edit content
-Open `src/data/portfolio.ts` and edit:
+
 - headline / subheadline
 - proof metrics
 - project templates (case-study style)
