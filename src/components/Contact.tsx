@@ -22,7 +22,9 @@ export function Contact() {
         </p>
         <div className="ctas" style={{ marginTop: 10 }}>
           <a className="btn btnPrimary" href={`mailto:${portfolio.email}?subject=Project%20inquiry`}>Email me</a>
-          <a className="btn" href={contact.github}>My Gihub</a>
+          <a className="btn" href={contact.github}>My Github</a>
+        </div>
+        <div className="muted small" style={{ marginTop: 10 }}>
         </div>
       </div>
     </div>

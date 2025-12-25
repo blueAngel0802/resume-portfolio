@@ -58,7 +58,7 @@ export function RainbowCursorTrail() {
       ctx.clearRect(0, 0, w, h);
 
       // keep last ~800ms
-      const life = 800;
+      const life = 2000;
       while (pts.length && now - pts[0].t > life) pts.shift();
 
       if (pts.length > 1) {
@@ -73,12 +73,12 @@ export function RainbowCursorTrail() {
           const fade = 1 - clamp(age / life, 0, 1);
 
           const hue = ( (now - start) * 0.05 + i * 10 ) % 360;
-          const width = 18 * fade + 2;
+          const width = 30 * fade + 2;
 
           // gradient along segment for a “rainbow” look
           const g = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
-          g.addColorStop(0, `hsla(${hue}, 95%, 65%, ${0.22 * fade})`);
-          g.addColorStop(1, `hsla(${(hue + 40) % 360}, 95%, 65%, ${0.18 * fade})`);
+          g.addColorStop(0, `hsla(${hue}, 98%, 63%, ${0.1 * fade})`);
+          g.addColorStop(1, `hsla(${(hue + 35) % 360}, 90%, 60%, ${0.10 * fade})`);
 
           ctx.strokeStyle = g;
           ctx.lineWidth = width;
@@ -91,9 +91,9 @@ export function RainbowCursorTrail() {
         // soft glow blob at head
         const head = pts[pts.length - 1];
         const hue = ((now - start) * 0.06) % 360;
-        const r = 40;
+        const r = 28;
         const rg = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, r);
-        rg.addColorStop(0, `hsla(${hue}, 95%, 70%, 0.22)`);
+        rg.addColorStop(0, `hsla(${hue}, 90%, 65%, 0.14)`);
         rg.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = rg;
         ctx.beginPath();

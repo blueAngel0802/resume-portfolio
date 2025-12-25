@@ -44,7 +44,7 @@ export function StarsBackground() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // density scales with screen area
-      const count = Math.floor((w * h) / 16000); // ~120 on 1920x1080
+      const count = Math.floor((w * h) / 10000); // ~120 on 1920x1080
       const stars: Star[] = [];
       for (let i = 0; i < count; i++) {
         stars.push({
@@ -105,11 +105,11 @@ export function StarsBackground() {
         if (s.y > h + 10) s.y = -10;
 
         // twinkle
-        const tw = 0.55 + 0.45 * Math.sin(s.ph + t * s.tw);
+        const tw = 0.7 + 0.3 * Math.sin(s.ph + t * s.tw * 0.8);
         const alpha = clamp(s.a * tw, 0.08, 0.95);
 
         // small sparkle occasionally
-        const sparkle = Math.sin((s.ph + t) * 3.1) > 0.995 ? 1.6 : 1;
+        const sparkle = Math.sin((s.ph + t) * 3.1) > 0.999 ? 1.7 : 1;
 
         ctx.globalAlpha = alpha;
         ctx.fillStyle = theme === "dark" ? "rgba(255,255,255,1)" : "rgba(20,24,34,1)";
@@ -121,9 +121,27 @@ export function StarsBackground() {
         ctx.globalAlpha = alpha * 0.35;
         const rr = s.r * 8;
         const rg = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, rr);
-        rg.addColorStop(0, theme === "dark" ? "rgba(255,255,255,0.25)" : "rgba(20,24,34,0.18)");
+        rg.addColorStop(0, theme === "dark" ? "rgba(255,255,255,0.65)" : "rgba(20,24,34,0.18)");
         rg.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = rg;
+
+        ctx.save();
+        ctx.translate(s.x, s.y);
+        ctx.rotate(s.ph);
+        ctx.globalAlpha = alpha * 0.9;
+
+        ctx.strokeStyle = "rgba(255,255,255,1)";
+        ctx.lineWidth = Math.max(0.5, s.r * 0.4);
+
+        ctx.beginPath();
+        ctx.moveTo(0, -s.r * 2.4);
+        ctx.lineTo(0, s.r * 2.4);
+        ctx.moveTo(-s.r * 2.4, 0);
+        ctx.lineTo(s.r * 2.4, 0);
+        ctx.stroke();
+
+        ctx.restore();
+
         ctx.beginPath();
         ctx.arc(s.x, s.y, rr, 0, Math.PI * 2);
         ctx.fill();
