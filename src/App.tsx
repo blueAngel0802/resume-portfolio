@@ -1,37 +1,40 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Section } from "./components/Section";
-import { Experience } from "./components/Experience";
-import { Skills } from "./components/Skills";
+import { Proof } from "./components/Proof";
+import { Projects } from "./components/Projects";
+import { Services } from "./components/Services";
+import { Process } from "./components/Process";
+import { ExperienceHighlights } from "./components/ExperienceHighlights";
+import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
-import { resume } from "./data/resume";
 
 export default function App() {
   return (
-    <>
+    <div className="app">
       <Header />
-      <Hero />
-
-      <main className="container">
-        <Section id="about" title="About">
-          <p>{resume.summaryShort}</p>
-        </Section>
-
-        <Section id="experience" title="Experience Highlights">
-          <Experience />
-        </Section>
-
-        <Section id="skills" title="Skills">
-          <Skills />
-        </Section>
-
-        <Section id="contact" title="Contact">
-          <p>Email: <a href={`mailto:${resume.email}`}>{resume.email}</a></p>
-          <p><a href="/resume.pdf" download>Download full resume (PDF)</a></p>
-        </Section>
+      <main>
+        <Hero />
+        <div className="container">
+          <Proof />
+          <Section id="projects" title="Projects / Case Studies" subtitle="Templates you can quickly customize">
+            <Projects />
+          </Section>
+          <Section id="services" title="Services" subtitle="Freelance-friendly packages you can offer">
+            <Services />
+          </Section>
+          <Section id="process" title="Process" subtitle="How I work with teams and clients">
+            <Process />
+          </Section>
+          <Section id="experience" title="Experience (highlights)" subtitle="Job-friendly, short and scannable">
+            <ExperienceHighlights />
+          </Section>
+          <Section id="contact" title="Contact" subtitle="Fastest way to reach me">
+            <Contact />
+          </Section>
+        </div>
       </main>
-
       <Footer />
-    </>
+    </div>
   );
 }

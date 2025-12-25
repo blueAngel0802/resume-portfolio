@@ -1,9 +1,15 @@
-import { resume } from "../data/resume";
+import { portfolio } from "../data/portfolio";
 
 export function Footer() {
   return (
-    <footer style={{borderTop:"1px solid #222",padding:"18px 24px",color:"#a6acb8"}}>
-      © {new Date().getFullYear()} {resume.name} · <a href={resume.linkedin}>LinkedIn</a>
+    <footer className="footer">
+      <div className="container footerInner">
+        <div className="muted small">© {new Date().getFullYear()} {portfolio.name}</div>
+        <div className="ctas">
+          <a className="btn" href="#projects">Projects</a>
+          <a className="btn" href={`mailto:${portfolio.email}`}>Contact</a>
+        </div>
+      </div>
     </footer>
   );
 }
