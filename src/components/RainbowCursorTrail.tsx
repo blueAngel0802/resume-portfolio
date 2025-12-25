@@ -28,6 +28,7 @@ export function RainbowCursorTrail() {
     if (prefersReduced) return;
 
     function resize() {
+      if (!canvas || !ctx) return;
       w = Math.floor(window.innerWidth);
       h = Math.floor(window.innerHeight);
       canvas.width = Math.floor(w * dpr);
