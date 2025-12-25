@@ -1,0 +1,1 @@
+export const resume = { name: 'Ryan David Converse', summary: 'Senior Software Engineer', email: 'ryan.converse0430@outlook.com' };
