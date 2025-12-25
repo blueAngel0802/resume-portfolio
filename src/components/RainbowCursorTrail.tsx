@@ -43,7 +43,7 @@ export function RainbowCursorTrail() {
       const last = lastRef.current;
 
       // sample spacing to avoid too many points
-      if (!last || Math.hypot(p.x - last.x, p.y - last.y) > 6) {
+      if (!last || Math.hypot(p.x - last.x, p.y - last.y) > 3) {
         ptsRef.current.push(p);
         lastRef.current = p;
         // cap points
@@ -52,6 +52,24 @@ export function RainbowCursorTrail() {
     }
 
     const start = performance.now();
+
+    function catmullRomToBezier(points: {x:number;y:number}[]) {
+      const beziers: Array<[number, number, number, number, number, number]> = [];
+      for (let i = 0; i < points.length - 1; i++) {
+        const p0 = points[i - 1] ?? points[i];
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const p3 = points[i + 2] ?? p2;
+
+        const c1x = p1.x + (p2.x - p0.x) / 6;
+        const c1y = p1.y + (p2.y - p0.y) / 6;
+        const c2x = p2.x - (p3.x - p1.x) / 6;
+        const c2y = p2.y - (p3.y - p1.y) / 6;
+
+        beziers.push([c1x, c1y, c2x, c2y, p2.x, p2.y]);
+      }
+      return beziers;
+    }
 
     function frame(now: number) {
       const pts = ptsRef.current;
@@ -85,7 +103,7 @@ export function RainbowCursorTrail() {
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
-          ctx.stroke();
+          ctx.stroke();        
         }
 
         // soft glow blob at head
