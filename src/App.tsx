@@ -3,7 +3,6 @@ import { Hero } from "./components/Hero";
 import { Section } from "./components/Section";
 import { Experience } from "./components/Experience";
 import { Skills } from "./components/Skills";
-import { Education } from "./components/Education";
 import { Footer } from "./components/Footer";
 import { resume } from "./data/resume";
 
@@ -12,23 +11,26 @@ export default function App() {
     <>
       <Header />
       <Hero />
-      <div className="container">
-        <Section id="summary" title="Summary">
-          <p>{resume.summary}</p>
+
+      <main className="container">
+        <Section id="about" title="About">
+          <p>{resume.summaryShort}</p>
         </Section>
-        <Section id="experience" title="Experience">
+
+        <Section id="experience" title="Experience Highlights">
           <Experience />
         </Section>
+
         <Section id="skills" title="Skills">
           <Skills />
         </Section>
-        <Section id="education" title="Education">
-          <Education />
-        </Section>
+
         <Section id="contact" title="Contact">
-          <p>{resume.email}</p>
+          <p>Email: <a href={`mailto:${resume.email}`}>{resume.email}</a></p>
+          <p><a href="/resume.pdf" download>Download full resume (PDF)</a></p>
         </Section>
-      </div>
+      </main>
+
       <Footer />
     </>
   );
