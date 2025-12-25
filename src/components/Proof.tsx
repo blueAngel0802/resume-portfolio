@@ -5,7 +5,6 @@ export function Proof() {
     <section className="section" aria-label="Proof">
       <div className="sectionHeader">
         <h2 className="h2">Proof</h2>
-        <p className="muted">A few outcomes (edit in src/data/portfolio.ts)</p>
       </div>
 
       <div className="kpis">

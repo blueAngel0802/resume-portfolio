@@ -5,10 +5,10 @@ const links = [
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
   { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" }
+  { label: "Contact", href: "#contact" },
 ];
 
-export function Header() {
+export function Header(props: { theme: "light" | "dark"; onToggleTheme: () => void }) {
   return (
     <header className="header">
       <div className="container headerInner">
@@ -26,6 +26,10 @@ export function Header() {
         </nav>
 
         <div className="ctas">
+          <button className="btn" onClick={props.onToggleTheme} type="button" aria-label="Toggle theme" title="Toggle theme">
+            {props.theme === "dark" ? "Light" : "Dark"}
+          </button>
+
           <a className="btn" href="/resume.pdf" download>
             Download resume
           </a>
