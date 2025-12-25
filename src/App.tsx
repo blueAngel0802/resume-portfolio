@@ -1,6 +1,6 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { Section } from "./components/Section";
+import Section from "./components/Section";
 import { Proof } from "./components/Proof";
 import { Projects } from "./components/Projects";
 import { Services } from "./components/Services";
