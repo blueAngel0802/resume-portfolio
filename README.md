@@ -19,4 +19,5 @@ npm run dev
 - experience highlights (2 bullets per role)
 
 ## Replace resume PDF
+
 Replace `public/resume.pdf` with your real resume PDF (keep the same filename).
