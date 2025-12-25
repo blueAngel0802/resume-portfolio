@@ -11,7 +11,7 @@ export function Footer() {
             e.preventDefault()
             smoothScrollToId("projects", { offset: 84, duration: 780 })
             }}>Projects</a>
-          <a className="btn" href={`mailto:${portfolio.email}`}>Contact</a>
+          <a className="btn" href={`mailto:${portfolio.email}`}>Contact Me</a>
         </div>
       </div>
     </footer>
