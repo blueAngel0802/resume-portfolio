@@ -44,7 +44,7 @@ export function StarsBackground() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // density scales with screen area
-      const count = Math.floor((w * h) / 10000); // ~120 on 1920x1080
+      const count = Math.floor((w * h) / 5000); // ~120 on 1920x1080
       const stars: Star[] = [];
       for (let i = 0; i < count; i++) {
         stars.push({
